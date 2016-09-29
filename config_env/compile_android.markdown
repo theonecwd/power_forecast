@@ -32,3 +32,10 @@ emulator -partition-size 1024 -kernel ../goldfish/arch/arm/boot/zImage
 //emulator -kernel  ./prebuilts/qemu-kernel/arm/kernel-qemu-armv7  -sysdir ./out/target/product/generic/ -system system.img -data userdata.img  -partition-size 1024
 
 > http://blog.csdn.net/flydream0/article/details/7070392
+
+
+## Problem
+```
+frameworks/base/api/current.txt:8: error 9: Removed public constructor Manifest.permission()
+The errors were resolved by re-downloading the source code.So if any of you encountered the same error, I would suggest you to re-download the source.The error should be gone.
+```

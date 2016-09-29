@@ -1,6 +1,6 @@
 # jprobe
 ## jprobe_example.c
-```
+```c
 
 #include <linux/kernel.h>
 #include <linux/module.h>
@@ -55,6 +55,24 @@ MODULE_LICENSE("GPL");
 
 
 ## Makefile
-;```
+```
+obj-m := jprobe_example.o
+
+
+KID := /home/cwd/fedora/cwd/paper/goldfish
+PWD := $(shell pwd)
+ARCH =arm
+CROSS_COMPILE=arm-eabi-
+cc=$(CROSS_COMPILE)gcc
+LD=$(CROSS_COMPILE)ld
+
+
+all:
+    make -C $(KID) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) M=$(PWD) modules
+
+clean:
+    rm -rf *.o .cmd *.ko *.mod.c .tmp_versions
 
 ```
+
+## adb push  insmod  cat /proc/kmsg
