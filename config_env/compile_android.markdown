@@ -10,7 +10,7 @@ make -j4
 为了使用模拟器
 export PATH=$PATH:android-4.4.4_r1/out/host/linux-x86/bin
 
-为编译goldfish
+为编译kernel
 export PATH=$PATH:android-4.4.4_r1/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin
 
 ```

@@ -8,9 +8,11 @@ git checkout android-msm-hammerhead-3.4-kitkat-mr1
 
 ## compile msm
 
+```
 cd android4.4.4
 source build/envsetup.sh
 lunch
+```
 > 上面source lunch貌似不是必须的
 修改内核Makefile文件
 ```
@@ -19,13 +21,17 @@ lunch
 ARCH            ?= arm
 CROSS_COMPILE   ?= arm-eabi-
 ```
+```
 make menuconfig 或者make hammerhead_defconfig
 make -j4
+```
 
 成功之后会生成zImage-dtb
 
 ## 生成boot.img
+```
 mkbooting --kernel zImage-dtb --ramdisk  android4.4.4/out/target/product/hammerhead/ramdisk.img --cmdline "console=ttyHSL0,115200,n8 androidboot.hardware=hammerhead user_debug=31 maxcpus=2 msm_watchdog_v2.enable=1" --base 0x00000000 --pagesize 2048 --ramdisk_offset 0x02900000 --tags_offset 0x02700000 --output my_boot.img
+```
 
 **关于上述参数请参考[这里](http://blog.csdn.net/wh_19910525/article/details/8200372)**
 

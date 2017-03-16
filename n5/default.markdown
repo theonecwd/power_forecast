@@ -33,13 +33,16 @@ lunch  选择 aosp_hammerhead-userdebug
 
 ## 生成驱动目录
 需要安装驱动，否则一直停留在google的黑色界面
+
 |HARDWARE COMPONENT | COMPANY   |  DOWNLOAD |   MD5 CHECKSUM |   SHA-1 CHECKSUM |
 |:-----------------:|:---------:|:---------:|:--------------:|:----------------:|
 |NFC, Bluetooth, Wi-Fi |  Broadcom | [下载](https://dl.google.com/dl/android/aosp/broadcom-hammerhead-lrx22c-964d941e.tgz) |   2c398994e37093df51b105d63f0eb611 |    991346159c95ae75f760014a6822b8b3e8667700
 |Camera, Sensors, Audio | LG | [下载](https://dl.google.com/dl/android/aosp/lge-hammerhead-lrx22c-95a9d465.tgz)|    74cf8235e6bb04da28b2ff738b13eee9|    175dd5bae81bb54030d072cb0f0b4ec81eb3f71f
 |Graphics, GSM, Camera, GPS, Sensors, Media, DSP, USB|    Qualcomm |  [ 下载](https://dl.google.com/dl/android/aosp/lge-hammerhead-lrx22c-95a9d465.tgz)|   0a43395e175d3de3dc312d8abdcb4f20 |    007cf9d49f0409d5c703e7f2811fd153fee22353
 
-**下载完成后,解压出来是三个.sh文件,放到Android源码目录下面,然后执行.会将相关驱动放到vender目录下面.**
+> **下载完成后,解压出来是三个.sh文件,放到Android源码目录下面,然后执行.会将相关驱动放到vender目录下面.**
+
+> **针对不同的android版本有不同的驱动文件,参考下面的下载官网**
 
 [下载官网](https://developers.google.com/android/nexus/drivers#fugumra58n)
 
@@ -47,18 +50,23 @@ lunch  选择 aosp_hammerhead-userdebug
 make -j4
 
 ## 刷机命令
+> 刷机的时候会默认刷入一个内核镜像，名字是boot,可以从fastboot -w flashall中的输出看到
 Nexus5关机状态下,长按音量下+电源,即可进入recovery模式, 然后在源码根目录下执行下面命令:
+```
 source  build/envsetup.sh 
 lunch
 fastboot -w flashall
-
+```
 或者
+```
 **root权限**
 adb shell
 reboot bootloader
 source  build/envsetup.sh 
 lunch
 fastboot -w flashall
+```
+
 
 adb fastboot这些命令在编译android源代码后加入了环境变量
 
